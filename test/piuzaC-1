@@ -1,0 +1,4 @@
+#include <stdio.h>int main(void){    int i, M;    int ipoint;    int istrlen;    int answer;    char str[100], *token1;        /* 初期化 */    i=0;    M=0;    ipoint=0;    answer=0;        /* 初期入力：M回数の入力*/    /* Mの範囲チェックを兼ねる */    while(M<1 || 100<M){         scanf("%d", &M);     }
+    for (i=0; i<M; i++) {        /* IPアドレスの入力 */        scanf("%s", str);                /* 初期化 */        ipoint = 0;        istrlen = -1;        answer=1;
+        /* 入力値を"."でセパレート */        token1 = strtok(str, ".");        while( token1 != NULL ){                        istrlen = atoi(token1);
+            if(istrlen<0 || 255<istrlen)                answer=0;                            ipoint++; /* カウントアップ */            token1 = strtok( NULL, "." );          }                /* ポインタが3つなければFALSE */        if(ipoint!=4)            answer=0;                    if(answer == 1)            printf("%s\n" ,"True");        else            printf("%s\n" ,"False");    }    return 0;}
